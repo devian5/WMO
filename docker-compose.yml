@@ -1,0 +1,20 @@
+version: '3.6'
+services:
+  api:
+    build: ./src/api
+    volumes:
+      - ./src/api:/api
+      - /api/node_modules
+    ports:
+      - 8081:8081
+  app:
+    build: ./src/app
+    volumes:
+      - ./src/app:/app
+      - /app/node_modules
+    environment:
+      - PORT=8181  
+    ports:
+      - 8181:8181
+    depends_on:
+      - api
