@@ -1,20 +1,10 @@
 version: '3.6'
 services:
-  api:
-    build: ./src/api
-    volumes:
-      - ./src/api:/api
-      - /api/node_modules
-    ports:
-      - 8081:8081
   app:
-    build: ./src/app
+    container_name: server
+    restart: always
+    image: nginx
     volumes:
-      - ./src/app:/app
-      - /app/node_modules
-    environment:
-      - PORT=8181  
+      - ./src/app:/usr/share/nginx/html
     ports:
-      - 8181:8181
-    depends_on:
-      - api
+      - 8080:80
