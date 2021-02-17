@@ -1,5 +1,12 @@
 #movie {
-    width: 55rem;
+    width: 20rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-gap: 1em;
+}
+#pepe {
+    width: 20rem;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(5, 1fr);
