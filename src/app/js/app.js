@@ -45,38 +45,40 @@ const renderMovie = (movieCollection) => {
 }
 
 const renderSearch = async (renderCollection) => {
-    //Proceso para el pintado HTML de las películas
-    const divMovieElement = document.getElementById("pepe");
+
+    const divMovieElement = document.getElementById("searchMovie");
     
-    // console.log(renderCollection);
+    divMovieElement.innerHTML = '';
+
     if (Array.isArray(renderCollection)) {
         console.log(renderCollection);
-        renderCollection.forEach(movie => {
-            divMovieElement.innerHTML += `<div id='movies'>
-            <img src='https://image.tmdb.org/t/p/w500${movie.poster_path}'></img></div>
-            <div id='text'><h2>${movie.title}</h2>
-            <p>${movie.overview}</p>
-            </div>`
+        renderCollection.map((movie) => {
+            divMovieElement.innerHTML += `
+                <div id='movies'>
+                <img src='https://image.tmdb.org/t/p/w500${movie.poster_path}'></img></div>
+                <div id='text'><h2>${movie.title}</h2>
+                <p>${movie.overview}</p>
+                </div>
+            `
         });
     }
     
     if (renderCollection.original_title){
-        divMovieElement.innerHTML += `<div class='movies'>
-            <img src='https://image.tmdb.org/t/p/w500${renderCollection.poster_path}' width='200px' class='picture'>
-            </img></div><div class='infoPelis'><h2>${renderCollection.original_title}</h2><p>${renderCollection.overview}</p></div>`
+        divMovieElement.innerHTML += `
+                <div class='movies'>
+                <img src='https://image.tmdb.org/t/p/w500${renderCollection.poster_path}' width='200px' class='picture'>
+                </img></div><div class='movieInfo'><h2>${renderCollection.original_title}</h2><p>${renderCollection.overview}</p></div>
+            `
         
     }
     return;
 };
-
-
 
 const callPromise = async (url) => {
     let response = await axios.get(url);
     
     if (response.data.results){
         return response.data.results;
-
     }
     
     if (response.data.title){
@@ -87,6 +89,8 @@ const callPromise = async (url) => {
 const search = async () => {
     if (event.keyCode === 13) {
         let query = explore.value;
+
+        // https://api.themoviedb.org/3/search/movie?api_key=c0b6dea31a9d647a6b7d1eafa59bacaa
 
         const url = `${baseUrl}/${param}/${endPoint}?api_key=${apiKey}&query=${query}`;
 
@@ -99,17 +103,19 @@ const search = async () => {
 };
 
 const searchId = async () => {
-    
+    if (event.keyCode === 13) {
         let query = exploreId.value;
 
         const urlId = `${baseUrl}/${endPoint}/${query}?api_key=${apiKey}`;
         
         let movie = await callPromise(urlId);
 
-        renderMovie(movie);
-    
-};
+        renderSearch(movie);
 
+        screenChange('mainScreen', 'front2');
+
+    }
+};
 
 const screenChange = (present, future) => {
     let screenPresent = document.getElementById(present);
@@ -119,20 +125,5 @@ const screenChange = (present, future) => {
     screenFuture.style.display = 'grid';
 
 };
-
-//  const enter = () => {
-//     let input = document.getElementById('search');
-
-//     input.addEventListener('keyup', (event) => {
-//       if (event.keyCode === 13) {
-//        event.preventDefault();
-//        document.getElementById("button").click();
-//       }
-//     })  
-//     // if (e.keyCode === 13 && !e.shiftKey) {
-//     //     let boton = document.getElementById("search");
-//     // }
-// }
-
 
 movieArrayPromise.then(renderMovie);
