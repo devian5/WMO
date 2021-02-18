@@ -10,7 +10,7 @@ const renderSearch = async (renderCollection) => {
         renderCollection.map((movie) => {
             divMovieElement.innerHTML += `
                 <div id='movies'>
-                    <img src='https://image.tmdb.org/t/p/w500${movie.poster_path}'></img></div>
+                    <img src='https://image.tmdb.org/t/p/w400${movie.poster_path}'></img></div>
                     <div id='text'><h2>${movie.title}</h2>
                     <p>${movie.overview}</p>
                 </div>
@@ -21,7 +21,7 @@ const renderSearch = async (renderCollection) => {
     if (renderCollection.original_title){
         divMovieElement.innerHTML += `
             <div class='movies'>
-                <img src='https://image.tmdb.org/t/p/w500${renderCollection.poster_path}' width='400px' class='picture'>
+                <img src='https://image.tmdb.org/t/p/w400${renderCollection.poster_path}' width='400px' class='picture'>
                 </img></div><div class='movieInfo'><h2>${renderCollection.original_title}</h2><p>${renderCollection.overview}</p>
             </div>
         `   

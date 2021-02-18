@@ -26,7 +26,7 @@ const renderMovie = (movieCollection) => {
     
     movieCollection.map((movie) =>{
         
-        const pathImg = 'https://image.tmdb.org/t/p/w500';
+        const pathImg = 'https://image.tmdb.org/t/p/w200';
 
         const newMovieDomElement = document.createElement('div');
 

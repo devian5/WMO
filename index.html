@@ -5,24 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WMO</title>
+    <link rel="stylesheet" href="./src/app/css/style.css">
 </head>
 <body>
-
-    <div class="header">
-        <input id="search" type="text" placeholder="title" onkeypress="search()">
-        <button onclick="search()">Search</button>
-
-        <input id="searchId" type="text" placeholder="id" onkeypress="searchId()">
-        <button id="button" onclick="searchId()">Search</button>
-    </div>
-
-    <div class="screenHome" id="mainScreen" style="display: flex;">
-        <div id="movie"></div>
-    </div>
+    <div class="container">
+        <div class="header">
+            <input id="search" type="text" placeholder="title" onkeypress="search()">
+            <button onclick="search()">Search</button>
     
-    <div class="screenSearch" id="front2" style="display: none;">
-        <div id="searchMovie"></div>
+            <input id="searchId" type="text" placeholder="id" onkeypress="searchId()">
+            <button id="button" onclick="searchId()">Search</button>
+        </div>
+    
+        <div class="screenHome" id="mainScreen" style="display: flex;">
+            <div id="movie"></div>
+        </div>
+        
+        <div class="screenSearch" id="front2" style="display: none;">
+            <div id="searchMovie"></div>
+        </div>
     </div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./src/app/js/search.js"></script>

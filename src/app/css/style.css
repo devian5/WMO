@@ -1,3 +1,4 @@
+
 #movie {
     width: 20rem;
     display: grid;
@@ -5,7 +6,7 @@
     grid-template-rows: repeat(5, 1fr);
     grid-gap: 1em;
 }
-#pepe {
+#searchMovie {
     width: 20rem;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
